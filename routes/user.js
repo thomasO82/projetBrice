@@ -1,5 +1,5 @@
 import { Router } from 'express' //importe uniquement la methode Router() d'express
-import UserModel from '../models/User.js'
+import UserModel from '../models/user.js'
 
 const userRouter = Router()
 
