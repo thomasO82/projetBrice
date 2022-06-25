@@ -9,6 +9,7 @@ const app = express();
 const router = express.Router()
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static('./assets')); 
 app.use(router)
 router.use(userRouter)

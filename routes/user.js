@@ -4,10 +4,8 @@ import UserModel from '../models/User.js'
 const userRouter = Router()
 
 userRouter.post('/user', async (req, res) => {
-    console.log(req.body);
-    console.log(req.params);
-    const newUser = new UserModel(req.params)
-    userSaved = await newUser.save()
+    const newUser = new UserModel(req.body)
+    await newUser.save()
     res.send(newUser)
 })
 
@@ -18,8 +16,10 @@ userRouter.get('/users', async (req, res) => {
 })
 
 userRouter.put('/user/:id', async (req, res) => {
+    console.log(req);
     let updatedUser = req.body
-    let pkm = await UserModel.updateOne({ _id: req.params.id }, updtatedPokemon)
+    let user = await UserModel.updateOne({ _id: req.params.id }, updatedUser)
+    res.send(user)
 })
 
 userRouter.delete('/user/:id', async (req, res) => {
