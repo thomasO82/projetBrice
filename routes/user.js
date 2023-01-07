@@ -1,11 +1,15 @@
 import { Router } from 'express' //importe uniquement la methode Router() d'express
 import UserModel from '../models/user.js'
+import escapeHtml from 'escape-html'
 
 const userRouter = Router()
 
 userRouter.post('/user', async (req, res) => {
     try {
-        console.log(req.body)
+        for(let i in req.body){
+            req.body[i] = escapeHtml(req.body[i])
+         }
+         console.log(req.body);
         const newUser = new UserModel(req.body)
         await newUser.save()
         res.send(newUser)
@@ -37,6 +41,9 @@ userRouter.get('/user/:id', async (req, res) => {
 
 userRouter.put('/user/:id', async (req, res) => {
     try {
+        for(let i in req.body){
+            req.body[i] = escapeHtml(req.body[i])
+         }
         let updatedUser = req.body
         let user = await UserModel.updateOne({ _id: req.params.id }, updatedUser)
         res.send(user)
