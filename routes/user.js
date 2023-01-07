@@ -5,6 +5,7 @@ const userRouter = Router()
 
 userRouter.post('/user', async (req, res) => {
     try {
+        console.log(req.body)
         const newUser = new UserModel(req.body)
         await newUser.save()
         res.send(newUser)
@@ -47,10 +48,18 @@ userRouter.put('/user/:id', async (req, res) => {
 userRouter.delete('/user/:id', async (req, res) => {
     try {
         let usr = await UserModel.deleteOne({ _id: req.params.id })
+	res.json("remove")
     } catch (error) {
         res.send(error)
     }
 })
 
-
+userRouter.delete('/users', async (req, res)=> {
+try{
+  await UserModel.deleteMany({})
+res.json('on est bon')
+}catch (err){
+res.send(err)
+}
+})
 export default userRouter
