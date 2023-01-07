@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Pas de nom'],
         validate: {
             validator: function(v) {
-                return /^[a-zA-Z]*$/.test(v);
+                return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(v);
             },
             message: "Please enter a valid name"
         },
@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Pas de prénom'],
         validate: {
             validator: function(v) {
-                return /^[a-zA-Z]*$/.test(v);
+                return /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u.test(v);
             },
             message: "Please enter a valid firstname"
         },
